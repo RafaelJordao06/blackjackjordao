@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blackjack do Jordao</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-logo" aria-hidden="true">
+            <span>BJ</span>
+            <small>21</small>
+          </div>
+          <div>
+            <p class="eyebrow">Blackjack Brasileiro 6</p>
+            <h1>Blackjack do Jordao</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <label class="seat-count-control">
+            <span>Assentos</span>
+            <select id="seatCountSelect" aria-label="Quantidade de assentos">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7" selected>7</option>
+            </select>
+          </label>
+          <button id="undoButton" type="button">Desfazer</button>
+          <button id="newRoundButton" type="button">Nova rodada</button>
+          <button id="resetShoeButton" type="button">Reset shoe</button>
+        </div>
+      </header>
+
+      <section class="workspace">
+        <section class="table-panel" aria-label="Mesa de blackjack">
+          <div class="felt-table">
+            <button id="dealerTarget" class="dealer-zone target-zone" type="button">
+              <span class="zone-title">Crupie</span>
+              <span id="dealerCards" class="card-row"></span>
+              <span id="dealerStatus" class="zone-status">Sem carta</span>
+            </button>
+
+            <div id="seats" class="seats"></div>
+
+            <div class="table-center">
+              <span>Shoe</span>
+              <strong id="shoeRemaining">416</strong>
+              <small id="shoeSeen">0 vistas</small>
+            </div>
+          </div>
+
+          <div class="rank-pad" id="rankPad" aria-label="Selecionar cartas"></div>
+        </section>
+
+        <aside class="analysis-panel" aria-label="Analise da jogada">
+          <div class="active-box">
+            <span id="activeTargetLabel">Assento 1</span>
+            <strong id="handTotal">--</strong>
+          </div>
+
+          <div id="recommendation" class="recommendation waiting">
+            Selecione a carta do crupie e duas cartas do assento ativo.
+          </div>
+
+          <div class="action-controls">
+            <button id="splitButton" type="button" disabled>Aplicar Dividir</button>
+            <button id="doubleButton" type="button" disabled>Aplicar Dobrar</button>
+          </div>
+
+          <div class="metric-grid">
+            <div>
+              <span>Estourar ao pedir</span>
+              <strong id="bustMetric">--</strong>
+            </div>
+            <div>
+              <span>Seguro</span>
+              <strong id="insuranceMetric">--</strong>
+            </div>
+          </div>
+
+          <section>
+            <h2>EV por acao</h2>
+            <div id="actionsList" class="actions-list"></div>
+          </section>
+
+          <section>
+            <h2>Crupie</h2>
+            <div id="dealerOutcomes" class="outcomes-list"></div>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script src="/engine.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
